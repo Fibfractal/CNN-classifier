@@ -1,15 +1,23 @@
 <template>
 
-    <div class="border">
-        <div class="statistics">
+    <div id = "container">
+
+        <div v-if="!contain_images" id = "message-container">
+            <p>Import the images first, to plot the classifications</p>
+        </div>
+
+        <div class="statistics" v-if="contain_images">
             <h1>Number of each label</h1>
-            <p v-if="!contain_images">Import the images first, to plot the classifications!</p>
-            <div class = "myCanvas">
-                <canvas id="myChart" v-if="contain_images" height= "100"></canvas>
+
+            <div id="canvas-container">
+                <div id = "myCanvas">
+                    <canvas id="myChart" v-if="contain_images"></canvas>
+
+                </div>
             </div>
         </div>
-    </div>
 
+    </div>
 </template>
 
 <script>
@@ -114,20 +122,35 @@
 
 <style scoped>
 
+    #container {
+
+        display:inline-block;
+        width: 80%;
+    }
+
     h1 {
         margin-bottom: 50px;
     }
 
-    .statistics {
+    #message-container {
+        display:flex;
+        justify-content: center; 
+        align-items: center;
+        background-color: rgb(202, 72, 72);
+        width: 100%;
+        height: 50px;
+        margin-top: 30px;
+    }
+
+    #canvas-container {
+        display: inline-block;
         width: 80%;
     }
 
-    .border {
-        display: flex;
-        justify-content: center;
+    p {
+        color: white;
+        font-size: 17px;
+        font-weight: bold;
     }
-
-    
-
 
 </style>

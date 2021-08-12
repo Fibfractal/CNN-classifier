@@ -2,10 +2,10 @@
 
     <div>
 
+        <button @click="exportFiles" v-if="contain_images">Download classifications</button>
         <div id = "container">
-            <button @click="exportFiles" v-if="contain_images">Download classifications</button>
-            <div id = "message-container">
-                <p v-if="!contain_images">Import the images first, to classify</p>
+            <div v-if="!contain_images" id = "message-container">
+                <p >Import the images first, to classify</p>
             </div>
         </div>
 
@@ -68,7 +68,7 @@
     button {
         width: 40%;
         height: 40px;
-        font-size: 18px;
+        font-size: 16px;
         margin-bottom: 30px;
     }
 

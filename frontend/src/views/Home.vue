@@ -1,8 +1,8 @@
 <template>
 
-    <div>
+    <div class = "container">
+        <h1>Import images to classify</h1>
         <form enctype="multipart/form-data" novalidate v-if="isInitial || isSaving">
-            <h1>Import images to classify</h1>
             <div class="dropbox">
                 <input type="file" multiple :name="uploadFieldName" :disabled="isSaving" @change="filesChange($event.target.name, $event.target.files); fileCount = $event.target.files.length" accept="image/*" class="input-file" >
                 <p v-if="isInitial"> 
@@ -16,6 +16,10 @@
                 </p>
             </div>
         </form>
+
+        <div class="spinnerContainer">
+          <div v-if="isSaving" class="loader"></div>
+        </div>
 
     </div>
 
@@ -116,11 +120,23 @@
 </script>
 
 <style scoped>
-    
+
+  .container {
+    display:inline-block;
+    width: 80%;
+  }
+
+  .container h1 {
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+
+  
+  /* -- dropbox area -- */
+
   .dropbox {
     display: flex;
     justify-content: center;
-
     outline: 2px dashed grey; 
     outline-offset: -10px;
     background: lightcyan;
@@ -149,6 +165,30 @@
     font-size: 1.2em;
     text-align: center;
     padding: 50px 0;
+  }
+
+
+  /* -- spinner -- */
+
+  .spinnerContainer {
+    margin-top: 50px;
+    display:flex;
+    justify-content: center;
+  }
+
+  .loader {
+
+    border: 10px solid #f3f3f3; 
+    border-top: 10px solid rgb(206, 90, 90,0.8); 
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 
 </style>

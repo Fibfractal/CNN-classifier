@@ -5,10 +5,7 @@ import time
 
 
 app = Sanic('app')
-
-data = model_load()
-model = data[0]
-X_test = data[1]
+model = model_load()
 
 # enable frontend to be served from root
 # app.static('/', './frontend/uploads')
@@ -29,9 +26,6 @@ async def make_predictions(req):
     await save_image(file,app)
     image = load_image()
 
-    # from csv
-    # prediction = predict(model, X_test)
-    
     # add filename here instead if save is deleted / uncommented
     prediction = predict(model, image)
 

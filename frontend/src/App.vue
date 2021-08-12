@@ -1,15 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3.0 + Vite" />
+  <div>
+    <main>
+      <Navbar/>
+      <router-view/>
+    </main>
+</div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  import Navbar from './components/Navbar.vue'
+
+  export default {
+
+    name: 'App',
+    components: {
+      Navbar
+    },
   }
-}
+
 </script>
+
+<style scoped>
+
+</style>
+

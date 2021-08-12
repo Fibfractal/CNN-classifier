@@ -2,9 +2,11 @@
 
     <div>
 
-        <div>
+        <div id = "container">
             <button @click="exportFiles" v-if="contain_images">Download classifications</button>
-            <p v-if="!contain_images">Import the images first, to classifify!</p>
+            <div id = "message-container">
+                <p v-if="!contain_images">Import the images first, to classify</p>
+            </div>
         </div>
 
         <Image v-for="(img, index) of images" :key="index" :image="img"/>
@@ -70,8 +72,26 @@
         margin-bottom: 30px;
     }
 
+    #container {
+        display:flex;
+        justify-content: center;
+
+    }
+
+    #message-container {
+        display:flex;
+        justify-content: center;
+        margin-top: 30px;
+        align-items: center;
+        background-color: rgb(202, 72, 72);
+        height: 50px;
+        width: 80%;
+    }
+
     p {
-        color: black;
+        color: white;
+        font-size: 17px;
+        font-weight: bold;
     }
     
 

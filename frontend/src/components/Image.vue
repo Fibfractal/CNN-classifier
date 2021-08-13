@@ -55,6 +55,7 @@
       img {
         width: 60px;
         height: 60px;
+        margin-top:15px;
       }
 
     }
@@ -66,7 +67,7 @@
       }
 
       .image {  
-        width: 120px;
+        width: 130px;
       }
 
       img {

@@ -100,7 +100,8 @@
 
         button {
             font-size: 16px;
-            margin-bottom: 30px;
+            margin-bottom: 50px;
+            margin-top: 20px;
         }
     }
 

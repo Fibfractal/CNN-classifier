@@ -68,8 +68,6 @@
     button {
         width: 40%;
         height: 40px;
-        font-size: 16px;
-        margin-bottom: 30px;
     }
 
     #container {
@@ -90,8 +88,32 @@
 
     p {
         color: white;
-        font-size: 17px;
         font-weight: bold;
+    }
+
+    /* If the screen size is 601px wide or more*/
+    @media screen and (min-width: 601px) {
+
+        p {
+            font-size: 17px;
+        }
+
+        button {
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+    }
+
+    /* If the screen size is 600px wide or less*/
+    @media screen and (max-width: 600px) {
+        p {
+            font-size: 13px;
+        }
+
+        button {
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
     }
     
 

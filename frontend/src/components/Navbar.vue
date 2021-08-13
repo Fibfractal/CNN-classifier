@@ -1,7 +1,10 @@
 <template>
 
     <nav>
-        <p>LOGO</p>
+        <div class="img_wrap">
+            <img src="..\assets\logo.svg" width=50 height=50 class="logo">
+            <p>Pooler</p>
+        </div>
 
         <div class="links">
 
@@ -64,6 +67,11 @@
     }
 
     p {
+        font-weight: bold;
+        color: white;
+    }
+
+    .img_wrap {
         float: left;
     }
 
@@ -74,6 +82,21 @@
             margin-left: 30px;
             margin-right: 30px;
         }
+
+        p {
+            margin-left: 15px;
+            font-size: 25px;
+        }
+
+        .logo {
+            margin-left: 20px;
+        }
+
+        .img_wrap {
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
 
     /* If the screen size is 600px wide or less, set the font-size of <div> to 10px */
@@ -82,6 +105,22 @@
             font-size: 15px;
             margin-left: 10px;
             margin-right: 10px;
+        }
+
+        p {
+            margin-left: 10px;
+            margin-bottom: 10px;
+            font-size: 17px;
+        }
+
+        .logo {
+            margin-left: 0px;
+            width:30px;
+            height:30px;
+        }
+
+        .img_wrap {
+            display: inline;
         }
     }
 

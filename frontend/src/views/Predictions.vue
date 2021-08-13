@@ -5,8 +5,8 @@
         <div class="button-container">
             <button @click="exportFiles" v-if="contain_images">Download classifications</button>
         </div>
-
         <Image v-for="(img, index) of images" :key="index" :image="img"/>
+        <div class="space"></div>
 
     </div>
 
@@ -69,6 +69,10 @@
     button {
         width: 40%;
         height: 40px;
+    }
+
+    .space {
+        height: 100px;
     }
 
     @media screen and (min-width: 601px) {

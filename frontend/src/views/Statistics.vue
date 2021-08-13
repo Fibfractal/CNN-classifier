@@ -142,6 +142,10 @@
         margin-top: 30px;
     }
 
+    .statistics {
+        margin-top: 20px;
+    }
+
     #canvas-container {
         display: inline-block;
         width: 80%;
@@ -149,8 +153,27 @@
 
     p {
         color: white;
-        font-size: 17px;
         font-weight: bold;
+    }
+
+    /* If the screen size is 601px wide or more*/
+    @media screen and (min-width: 601px) {
+        p {
+            font-size: 17px;
+        }
+    }
+
+    /* If the screen size is 600px wide or less*/
+    @media screen and (max-width: 600px) {
+
+        h1 {
+            font-size: 20px;
+        }
+
+        p {
+            font-size: 13px;
+        }
+
     }
 
 </style>

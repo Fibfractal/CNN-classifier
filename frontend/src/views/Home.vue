@@ -78,7 +78,7 @@
             this.$store.commit('setPredictions', predictions)
             this.$store.commit('mergePredictImage')
 
-            this.$router.push('Predictions')
+            this.$router.push('/predictions')
         }
         else {
             console.log("Error")

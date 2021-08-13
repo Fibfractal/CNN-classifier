@@ -2,10 +2,6 @@
 
     <div id = "container">
 
-        <div v-if="!contain_images" id = "message-container">
-            <p>Import the images first, to plot the classifications</p>
-        </div>
-
         <div class="statistics" v-if="contain_images">
             <h1>Number of each label</h1>
 
@@ -113,9 +109,10 @@
                 this.createChart(counter)
                 console.log("Loaded!")
             }
+            else {
+                this.$router.push("/")
+            }
         }
-        
-
     }
 
 </script>
@@ -132,16 +129,6 @@
         margin-bottom: 50px;
     }
 
-    #message-container {
-        display:flex;
-        justify-content: center; 
-        align-items: center;
-        background-color: rgb(202, 72, 72);
-        width: 100%;
-        height: 50px;
-        margin-top: 30px;
-    }
-
     .statistics {
         margin-top: 20px;
     }
@@ -151,29 +138,10 @@
         width: 80%;
     }
 
-    p {
-        color: white;
-        font-weight: bold;
-    }
-
-    /* If the screen size is 601px wide or more*/
-    @media screen and (min-width: 601px) {
-        p {
-            font-size: 17px;
-        }
-    }
-
-    /* If the screen size is 600px wide or less*/
     @media screen and (max-width: 600px) {
 
         h1 {
             font-size: 20px;
         }
-
-        p {
-            font-size: 13px;
-        }
-
     }
-
 </style>

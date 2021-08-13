@@ -6,7 +6,7 @@
             <p>Pooler</p>
         </div>
 
-        <div class="links">
+        <div class="links" v-if="contain_images">
 
             <div class="container">
                 <router-link to="/">Import images</router-link>
@@ -27,9 +27,16 @@
 
             }
         },
+        computed: {
+
+            contain_images(){
+                return this.$store.state.predictions.length > 0
+            }
+        },
         methods: {
 
-        }
+        },
+
 
     }
 

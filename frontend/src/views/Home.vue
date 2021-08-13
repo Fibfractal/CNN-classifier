@@ -161,8 +161,6 @@
   }
 
   .dropbox p {
-    
-    font-size: 1.2em;
     text-align: center;
     padding: 50px 0;
   }
@@ -190,5 +188,23 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+    /* If the screen size is 601px wide or more*/
+    @media screen and (min-width: 601px) {
+      .dropbox p {
+        font-size: 1.2em;
+      }
+    }
+
+    /* If the screen size is 600px wide or less*/
+    @media screen and (max-width: 600px) {
+      h1 {
+          font-size: 20px;
+      }
+
+      .dropbox p {
+        font-size: 0.8em;
+      }
+    }
 
 </style>

@@ -2,12 +2,11 @@
 
     <div>
 
-        <div>
+        <div class="button-container">
             <button @click="exportFiles" v-if="contain_images">Download classifications</button>
-            <p v-if="!contain_images">Import the images first, to classifify!</p>
         </div>
-
         <Image v-for="(img, index) of images" :key="index" :image="img"/>
+        <div class="space"></div>
 
     </div>
 
@@ -54,9 +53,13 @@
 
             }
 
-        }
-        
+        },
+        mounted(){
 
+            if(!this.$store.state.predictions.length > 0){
+                this.$router.push("/")
+            }
+        }
     }
 
 </script>
@@ -66,14 +69,27 @@
     button {
         width: 40%;
         height: 40px;
-        font-size: 18px;
-        margin-bottom: 30px;
     }
 
-    p {
-        color: black;
+    .space {
+        height: 100px;
     }
-    
 
+    @media screen and (min-width: 601px) {
+
+        button {
+            font-size: 16px;
+            margin-bottom: 50px;
+            margin-top: 20px;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+
+        button {
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+    }
 
 </style>

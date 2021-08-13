@@ -1,15 +1,19 @@
 <template>
 
-    <div class="border">
-        <div class="statistics">
+    <div id = "container">
+
+        <div class="statistics" v-if="contain_images">
             <h1>Number of each label</h1>
-            <p v-if="!contain_images">Import the images first, to plot the classifications!</p>
-            <div class = "myCanvas">
-                <canvas id="myChart" v-if="contain_images" height= "100"></canvas>
+
+            <div id="canvas-container">
+                <div id = "myCanvas">
+                    <canvas id="myChart" v-if="contain_images"></canvas>
+
+                </div>
             </div>
         </div>
-    </div>
 
+    </div>
 </template>
 
 <script>
@@ -105,29 +109,39 @@
                 this.createChart(counter)
                 console.log("Loaded!")
             }
+            else {
+                this.$router.push("/")
+            }
         }
-        
-
     }
 
 </script>
 
 <style scoped>
 
+    #container {
+
+        display:inline-block;
+        width: 80%;
+    }
+
     h1 {
         margin-bottom: 50px;
     }
 
     .statistics {
+        margin-top: 20px;
+    }
+
+    #canvas-container {
+        display: inline-block;
         width: 80%;
     }
 
-    .border {
-        display: flex;
-        justify-content: center;
+    @media screen and (max-width: 600px) {
+
+        h1 {
+            font-size: 20px;
+        }
     }
-
-    
-
-
 </style>

@@ -2,7 +2,8 @@
 
     <div class = "container">
         <h1>Import images to classify</h1>
-        <form enctype="multipart/form-data" novalidate v-if="isInitial || isSaving">
+        <form enctype="multipart/form-data" novalidate>
+
             <div class="dropbox">
                 <input type="file" multiple :name="uploadFieldName" :disabled="isSaving" @change="filesChange($event.target.name, $event.target.files); fileCount = $event.target.files.length" accept="image/*" class="input-file" >
                 <p v-if="isInitial"> 
@@ -11,8 +12,11 @@
                 <p v-if="isSaving">
                     Uploading {{ fileCount }} files...
                 </p>
-                <p v-if="isFailed">
-                    Uploading failed, click or drag to try again!
+                <p v-if="isServerFailed">
+                    Server error, click or drag to try again!
+                </p>
+                <p v-if="isWrongFile">
+                    Wrong file type click or drag <br> to try again!
                 </p>
             </div>
         </form>
@@ -27,16 +31,14 @@
 
 <script>
 
-  const STATUS_INITIAL = 1, STATUS_SAVING = 2, STATUS_SUCCESS = 3, STATUS_FAILED = 4;
+  const STATUS_INITIAL = 1, STATUS_SAVING = 2, STATUS_SERVER_FAILED = 3, STATUS_WRONG_FILE = 4;
 
 
   export default {
     
     data() {
       return {
-        uploadedFiles: [],
-        uploadError: null,
-        currentStatus: 1,
+        currentStatus: STATUS_INITIAL,
         uploadFieldName: 'photos',
       }
     },
@@ -47,20 +49,16 @@
       isSaving() {
         return this.currentStatus === STATUS_SAVING;
       },
-      isSuccess() {
-        return this.currentStatus === STATUS_SUCCESS;
+      isServerFailed() {
+        return this.currentStatus === STATUS_SERVER_FAILED;
       },
-      isFailed() {
-        return this.currentStatus === STATUS_FAILED;
+      isWrongFile(){
+        return this.currentStatus === STATUS_WRONG_FILE;
       }
+
     },
     methods: {
-      reset() {
-        // reset form to initial state
-        this.currentStatus = STATUS_INITIAL;
-        this.uploadedFiles = [];
-        this.uploadError = null;
-      },
+
       async sendPost(formData, testFile) {
 
         this.currentStatus = STATUS_SAVING;
@@ -82,7 +80,7 @@
         }
         else {
             console.log("Error")
-            this.currentStatus = STATUS_FAILED
+            this.currentStatus = STATUS_SERVER_FAILED
         }
       },
       filesChange(fieldName, fileList) {
@@ -110,7 +108,7 @@
             }
         }
 
-        flag ? this.sendPost(formData, fileList) : console.log("Wrong file type!")
+        flag ? this.sendPost(formData, fileList) : this.currentStatus = STATUS_WRONG_FILE
       }
     },
 

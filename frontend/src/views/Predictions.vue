@@ -46,7 +46,7 @@
                     var content = predictions[i].img;
                     var filename = "Predicted_to_" + predictions[i].prediction + "_" + predictions[i].file_name;
 
-                    zip.file(filename, content);
+                    zip.file( "classifications/" + predictions[i].prediction + "/" + filename, content);
                 }  
 
                 zip.generateAsync({type:"blob"})

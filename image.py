@@ -55,7 +55,8 @@ def process_image(image):
     return image_t
 
 
-
+# Not used right now, but can be if there is a need to save all images backend, and a use of a DB.
+# Then create the folder "images" and subfolders "0" - "9" in it.
 def save_classified_image(prediction, file):
 
     file_name = secure_filename(file.name)
@@ -67,5 +68,5 @@ def save_classified_image(prediction, file):
         path = "./images/" + prediction["prediction"] + "/" + file_name
         cv2.imwrite(path, img_org)
     
-    return file_name, path
+    return path
 

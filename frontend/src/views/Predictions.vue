@@ -37,20 +37,22 @@
         },
         methods: {
             exportFiles(){
-                
+
                 let predictions = this.$store.state.predictions
+                var zip = new JSZip();
 
                 for(let i = 0; i < predictions.length; i++){
 
                     var content = predictions[i].img;
                     var filename = "Predicted_to_" + predictions[i].prediction + "_" + predictions[i].file_name;
-                    var blob = new Blob([content], {
-                      type: "image/jpg"
-                      });
-                    saveAs(blob, filename);
 
-                }               
+                    zip.file(filename, content);
+                }  
 
+                zip.generateAsync({type:"blob"})
+                .then(function (blob) {
+                    saveAs(blob, "classifications.zip");
+                });
             }
 
         },

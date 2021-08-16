@@ -1,7 +1,7 @@
 <template>
 
     <div class = "container">
-        <h1>Import images to classify</h1>
+        <h1>Import images of numbers for classification</h1>
         <form enctype="multipart/form-data" novalidate>
 
             <div class="dropbox">
@@ -75,6 +75,7 @@
 
             this.$store.commit('setPredictions', predictions)
             this.$store.commit('mergePredictImage')
+            this.$store.commit('setCountedLabels', this.countLabels())
 
             this.$router.push('/predictions')
         }
@@ -109,6 +110,26 @@
         }
 
         flag ? this.sendPost(formData, fileList) : this.currentStatus = STATUS_WRONG_FILE
+      },
+      countLabels(){
+        let predictions = this.$store.state.predictions
+        console.log("Predictions length: ", predictions.length)
+        let counter = [0,0,0,0,0,0,0,0,0,0]
+        let dict = {0:0,1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0}
+
+
+        for(let i = 0; i < predictions.length; i++) {
+            dict[predictions[i].prediction] += 1
+            console.log("Dictionary: " + dict[predictions[i].prediction])
+        }
+
+        for (var key in dict){
+
+            counter[parseInt(key)] = dict[key]
+        }
+        console.log("List: ", counter) 
+
+        return counter
       }
     },
 

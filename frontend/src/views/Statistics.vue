@@ -73,37 +73,13 @@
                     }
                 })
                 
-            },
-            countLabels(){
-                let predictions = this.$store.state.predictions
-                console.log("Predictions length: ", predictions.length)
-                let counter = [0,0,0,0,0,0,0,0,0,0]
-                let dict = {0:0,1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0}
-
-
-                for(let i = 0; i < predictions.length; i++) {
-                    // console.log(predictions[i].prediction)
-                    // console.log(typeof(predictions[i].prediction))
-                    dict[predictions[i].prediction] += 1
-
-                    console.log("Dictionary: " + dict[predictions[i].prediction])
-                }
-
-                for (var key in dict){
-
-                    counter[parseInt(key)] = dict[key]
-                }
-                console.log("List: ", counter) 
-
-                return counter
             }
-
         },
         mounted(){
 
             if(this.$store.state.predictions.length > 0){
 
-                let counter = this.countLabels()
+                let counter = this.$store.state.countedLabels
                 let canvas = document.getElementById("myChart")
                 this.canvas = canvas.getContext("2d")
                 this.createChart(counter)

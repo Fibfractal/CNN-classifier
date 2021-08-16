@@ -49,12 +49,22 @@
                     zip.file( "classifications/" + predictions[i].prediction + "/" + filename, content);
                 }  
 
+                const NBRS = 10
+                let summery = `-- Summery of classifications ---\n\nNumber of classifications: ${predictions.length} \n`
+
+                let labels = this.$store.state.countedLabels
+
+                for(let i = 0; i < NBRS; i++){
+                    summery = summery.concat(`Number of class ${i}: ${labels[i]} \n`);
+                }
+
+                zip.file("classifications/summery.txt", summery )
+
                 zip.generateAsync({type:"blob"})
                 .then(function (blob) {
                     saveAs(blob, "classifications.zip");
                 });
             }
-
         },
         mounted(){
 

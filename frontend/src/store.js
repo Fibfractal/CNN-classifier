@@ -2,7 +2,8 @@ import { createStore } from 'vuex'
 
 const state = {
   predictions: [],
-  images: []
+  images: [],
+  countedLabels: []
 }
 
 const mutations = {
@@ -11,6 +12,9 @@ const mutations = {
   },
   setImages(state, images) {
     state.images = images
+  },
+  setCountedLabels(state, countedLabels){
+    state.countedLabels = countedLabels
   },
   mergePredictImage(state){
     for(let i = 0; i < state.predictions.length; i++){

@@ -1,4 +1,4 @@
-from image import save_image, load_image, save_classified_image
+from image import save_image, load_image
 from cnn import model_load, predict
 from sanic import Sanic, response as res
 from werkzeug.utils import secure_filename
@@ -7,9 +7,6 @@ import time
 
 app = Sanic('app')
 model = model_load()
-
-# enable frontend to be served from root
-# app.static('/', './frontend/uploads')
 
 
 @app.post('/api/predict')

@@ -63,7 +63,11 @@
 
         this.currentStatus = STATUS_SAVING;
 
-        var res = await fetch('/api/predict', {
+        let selectedModel = "standard"
+        // let selectedModel = "transferlearning"
+
+
+        var res = await fetch('/api/predict/' + selectedModel, {
           method: 'POST',
           body: formData
         })
@@ -85,6 +89,8 @@
         }
       },
       filesChange(fieldName, fileList) {
+
+        
 
         this.$store.commit('setImages', fileList)
 

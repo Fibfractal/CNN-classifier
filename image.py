@@ -3,7 +3,8 @@ import aiofiles
 import cv2 
 from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.preprocessing.image import img_to_array
-import matplotlib.pyplot as plt
+import numpy as np
+from skimage.transform import resize
 
 
 async def save_image(file, app):
@@ -17,7 +18,7 @@ async def save_image(file, app):
     f.close()
 
 
-def load_image():
+def load_image_model_1():
     # 1 channel
     image = load_img('uploads', grayscale=True, target_size=(28,28))
     image = img_to_array(image)
@@ -26,6 +27,28 @@ def load_image():
     image = image.reshape(1,28,28,1)
     image = image.astype('float32') / 255
     return image
+
+
+def load_image_model_2():
+
+    image = load_img('uploads', grayscale=True, target_size=(28,28))
+    image = img_to_array(image)
+
+    # process_image make prediction not work!
+    # image = process_image(image)
+    image = image.flatten()
+    image = image.astype('float32') / 255
+
+    image = resize(image, (96, 96),
+            mode='constant',
+            anti_aliasing=False)
+
+    # convert to 3 channel (RGB)
+    image = np.stack((image,)*3, axis=-1) 
+    image = image.reshape(1,96,96,3)
+    image = image.astype(np.float32)
+    return image
+
 
 def process_image(image):
     # Get higher contrast

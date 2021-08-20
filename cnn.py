@@ -1,10 +1,6 @@
 from tensorflow.keras.models import load_model
 import numpy as np
 
-def model_load():
-    model = load_model('bestCNNmodel.h5')
-    return model
-
 
 def predict(model, image):
 

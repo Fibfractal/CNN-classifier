@@ -21,6 +21,12 @@
             </div>
         </form>
 
+        <select class="drop-down" v-model="selectedModel" >
+            <option value="" disabled>- Select model -</option>
+            <option value="standard">Standard classifier</option>
+            <option value="transferlearning">Optional classifier</option>
+        </select>
+
         <div class="spinnerContainer">
           <div v-if="isSaving" class="loader"></div>
         </div>
@@ -40,6 +46,7 @@
       return {
         currentStatus: STATUS_INITIAL,
         uploadFieldName: 'photos',
+        selectedModel: "standard"
       }
     },
     computed: {
@@ -63,7 +70,7 @@
 
         this.currentStatus = STATUS_SAVING;
 
-        var res = await fetch('/api/predict', {
+        var res = await fetch('/api/predict/' + this.selectedModel, {
           method: 'POST',
           body: formData
         })
@@ -85,6 +92,8 @@
         }
       },
       filesChange(fieldName, fileList) {
+
+        
 
         this.$store.commit('setImages', fileList)
 
@@ -185,7 +194,6 @@
     padding: 50px 0;
   }
 
-
   /* -- spinner -- */
 
   .spinnerContainer {
@@ -214,6 +222,12 @@
       .dropbox p {
         font-size: 1.2em;
       }
+
+      .drop-down {
+        padding: 8px;
+        font-size: 16px;
+        margin-top: 5px;
+      }      
     }
 
     /* If the screen size is 600px wide or less*/
@@ -225,6 +239,11 @@
       .dropbox p {
         font-size: 0.8em;
       }
+
+      .drop-down {
+        padding: 3px;
+        font-size: 12px;
+      }      
     }
 
 </style>

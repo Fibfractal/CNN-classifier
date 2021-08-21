@@ -66,7 +66,7 @@
     },
     methods: {
 
-      async sendPost(formData, testFile) {
+      async sendPost(formData) {
 
         this.currentStatus = STATUS_SAVING;
 
@@ -118,7 +118,8 @@
             }
         }
 
-        flag ? this.sendPost(formData, fileList) : this.currentStatus = STATUS_WRONG_FILE
+        flag ? this.sendPost(formData) : this.currentStatus = STATUS_WRONG_FILE
+
       },
       countLabels(){
         let predictions = this.$store.state.predictions
@@ -141,6 +142,10 @@
         return counter
       }
     },
+    updated(){
+      // Clears eventual previous error requests
+      // so new uploads work
+    }
 
 
   }
@@ -151,7 +156,6 @@
 
   .container {
     display:inline-block;
-    /* height:100wh; */
     width: 80%;
   }
 

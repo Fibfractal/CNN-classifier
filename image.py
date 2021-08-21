@@ -34,7 +34,8 @@ def load_image_model_2():
     image = load_img('uploads', grayscale=True, target_size=(28,28))
     image = img_to_array(image)
 
-    # process_image make prediction not work!
+    # Unclear why process_image() make the transfer model worse!?
+    # When it works perfect with the standard model.
     # image = process_image(image)
     image = image.flatten()
     image = image.astype('float32') / 255
@@ -51,7 +52,7 @@ def load_image_model_2():
 
 
 def process_image(image):
-    # Get higher contrast
+    # Get higher contrast, threshold make a pixel black or white
     (thresh, image_t) = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY)
 
     # See if white or black background
@@ -76,20 +77,3 @@ def process_image(image):
         return image_t
 
     return image_t
-
-
-# Not used right now, but can be if there is a need to save all images backend, and a use of a DB.
-# Then create the folder "images" and subfolders "0" - "9" in it.
-def save_classified_image(prediction, file):
-
-    file_name = secure_filename(file.name)
-    path = ""
-
-    if prediction["prediction"] in [str(nbr) for nbr in range(10)]:
-        # np array, as original image
-        img_org = cv2.imread('uploads')
-        path = "./images/" + prediction["prediction"] + "/" + file_name
-        cv2.imwrite(path, img_org)
-    
-    return path
-

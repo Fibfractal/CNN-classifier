@@ -9,7 +9,7 @@ import time
 app = Sanic('app')
 
 @app.post('/api/predict/standard')
-async def make_predictions(req):
+async def make_predictions_model_1(req):
 
   t0 = time.time()
 
@@ -36,7 +36,7 @@ async def make_predictions(req):
 
 
 @app.post('/api/predict/transferlearning')
-async def make_predictions(req):
+async def make_predictions_model_2(req):
 
   t0 = time.time()
 

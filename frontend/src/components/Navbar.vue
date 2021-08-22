@@ -9,9 +9,9 @@
         <div class="links" v-if="contain_images">
 
             <div class="container">
-                <router-link to="/">Import images</router-link>
-                <router-link to="/predictions">Classification</router-link>
-                <router-link to="/statistics">Diagram</router-link>
+                <router-link active-class="active" to="/">Import images</router-link>
+                <router-link active-class="active" to="/predictions">Classification</router-link>
+                <router-link active-class="active" to="/statistics">Diagram</router-link>
             </div>
         </div>
     </nav>
@@ -54,6 +54,11 @@
         box-shadow: 0px 5px 10px  0px;
     }
 
+    .active {
+        text-decoration-line: underline;
+        text-underline-offset: 0.3em
+    }
+
     .links {
         margin: auto;
     }
@@ -66,11 +71,6 @@
     a {
         text-decoration: none;
         color: black;
-    }
-
-    a:hover {
-        color: white;
-        transition: 0.5s;
     }
 
     p {

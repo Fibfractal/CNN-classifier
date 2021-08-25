@@ -12,20 +12,21 @@ containing 0 - 9 folders and a summery. In the navbar you can view the classific
 in a diagram, showing the number of classifications for each label.
 
 
-#Project setup (Windows)
+## Project setup (Windows)
 * Sanic and Vue vite needs to be up and running for the app to work.
 
 Terminal 1 (Sanic server)
 1. Create a virtual environment:
-    <br/>py -m venv venv
-    <br/>venv\Scripts\activate.bat
-2. pip install -r requirements.txt 
+    <br/>```py -m venv venv```
+    <br/>```venv\Scripts\activate.bat```
+2. Install packages:
+    <br/>```pip install -r requirements.txt ```
 
 
-Terminal 2 (Vue vite server)
-1. cd frontend
-2. npm install
-3. npm run dev
+<br/>Terminal 2 (Vue vite server)
+1. ```cd frontend```
+2. ```npm install```
+3. ```npm run dev```
 
 
 

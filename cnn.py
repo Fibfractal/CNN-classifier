@@ -1,4 +1,3 @@
-from tensorflow.keras.models import load_model
 import numpy as np
 
 
@@ -10,5 +9,3 @@ def predict(model, image):
 
     # return a dict with predicted values
     return { "prediction": str(pred_nbr), "probability": pred_prob }
-
-

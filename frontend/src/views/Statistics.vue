@@ -1,19 +1,16 @@
 <template>
 
     <div id = "container">
-
         <div class="statistics" v-if="contain_images">
             <h1>Number of each label</h1>
-
             <div id="canvas-container">
                 <div id = "myCanvas">
                     <canvas id="myChart" v-if="contain_images"></canvas>
-
                 </div>
             </div>
         </div>
-
     </div>
+
 </template>
 
 <script>
@@ -23,23 +20,20 @@
     export default {
 
         data() {
-            return {
 
+            return {
                 canvas: '',
                 chart: ''
-
             }
-        },
-        components: {
         },
         computed: {
 
             contain_images(){
                 return this.$store.state.predictions.length > 0
             }
-
         },
         methods: {
+
             createChart(counter){
 
                 this.chart = new Chart(this.canvas, {
@@ -82,7 +76,6 @@
                 let canvas = document.getElementById("myChart")
                 this.canvas = canvas.getContext("2d")
                 this.createChart(counter)
-                console.log("Loaded!")
             }
             else {
                 this.$router.push("/")

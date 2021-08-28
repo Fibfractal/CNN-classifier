@@ -22,22 +22,12 @@
 
     export default {
 
-        data() {
-            return {
-
-            }
-        },
         computed: {
 
             contain_images(){
                 return this.$store.state.predictions.length > 0
             }
-        },
-        methods: {
-
-        },
-
-
+        }
     }
 
 </script>
@@ -82,7 +72,7 @@
         float: left;
     }
 
-    /* If the screen size is 601px wide or more, set the font-size of <div> to 22px */
+    /* If the screen size is 601px wide or more*/
     @media screen and (min-width: 601px) {
         a {
             font-size: 22px;
@@ -106,7 +96,7 @@
         }
     }
 
-    /* If the screen size is 600px wide or less, set the font-size of <div> to 10px */
+    /* If the screen size is 600px wide or less*/
     @media screen and (max-width: 600px) {
         a {
             font-size: 15px;

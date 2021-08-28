@@ -39,10 +39,10 @@
 
   const STATUS_INITIAL = 1, STATUS_SAVING = 2, STATUS_SERVER_FAILED = 3, STATUS_WRONG_FILE = 4;
 
-
   export default {
     
     data() {
+
       return {
         currentStatus: STATUS_INITIAL,
         uploadFieldName: 'photos',
@@ -50,6 +50,7 @@
       }
     },
     computed: {
+
       isInitial() {
         return this.currentStatus === STATUS_INITIAL;
       },
@@ -93,8 +94,6 @@
       },
       filesChange(fieldName, fileList) {
 
-        
-
         this.$store.commit('setImages', fileList)
 
         const formData = new FormData();
@@ -122,6 +121,7 @@
 
       },
       countLabels(){
+
         let predictions = this.$store.state.predictions
         console.log("Predictions length: ", predictions.length)
         let counter = [0,0,0,0,0,0,0,0,0,0]
@@ -146,8 +146,6 @@
       // Clears eventual previous error requests
       // so new uploads work
     }
-
-
   }
 
 </script>

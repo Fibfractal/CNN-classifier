@@ -12,11 +12,7 @@
 
   export default {
     
-    props: ["image"],
-    methods: {
- 
-    }
-
+    props: ["image"]
   }
 
 </script>

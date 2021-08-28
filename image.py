@@ -1,4 +1,3 @@
-from werkzeug.utils import secure_filename
 import aiofiles
 import cv2 
 from tensorflow.keras.preprocessing.image import load_img
